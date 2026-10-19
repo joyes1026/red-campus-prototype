@@ -88,8 +88,8 @@ button{-webkit-tap-highlight-color:transparent;touch-action:manipulation}
   .content-note{right:max(22px,env(safe-area-inset-right));bottom:max(18px,env(safe-area-inset-bottom))}
 
   .game-screen{height:100dvh;min-height:100dvh;grid-template-rows:96px minmax(0,1fr) auto;overflow:hidden}
-  .hud{grid-template-columns:auto minmax(170px,1fr) auto minmax(150px,1fr) auto;grid-template-rows:44px 36px;grid-template-areas:"map hp resources location save" "bond gallery inventory inventory inventory";gap:5px 9px;padding:7px max(14px,env(safe-area-inset-right)) 7px max(14px,env(safe-area-inset-left))}
-  #mapBtn{grid-area:map}.hud-stat:first-of-type{grid-area:hp}.hud-stat:nth-of-type(2){grid-area:resources;display:flex}.hud-location{grid-area:location;display:block;padding-right:0;text-align:left}.hud-location strong{font-size:.82rem}#bondBtn{grid-area:bond}#galleryBtn{grid-area:gallery}#inventoryBtn{grid-area:inventory}#bondBtn,#galleryBtn,#inventoryBtn{justify-self:start}#saveBtn{grid-area:save}.sound-btn{display:none}
+  .hud{grid-template-columns:auto minmax(170px,1fr) auto minmax(150px,1fr) auto;grid-template-rows:44px 44px;grid-template-areas:"map hp resources location save" "bond gallery sound inventory inventory";gap:5px 9px;padding:7px max(14px,env(safe-area-inset-right)) 7px max(14px,env(safe-area-inset-left))}
+  #mapBtn{grid-area:map}.hud-stat:first-of-type{grid-area:hp}.hud-stat:nth-of-type(2){grid-area:resources;display:flex}.hud-location{grid-area:location;display:block;padding-right:0;text-align:left}.hud-location strong{font-size:.82rem}#bondBtn{grid-area:bond}#galleryBtn{grid-area:gallery}#soundBtn{grid-area:sound;display:block}#inventoryBtn{grid-area:inventory}#bondBtn,#galleryBtn,#soundBtn,#inventoryBtn{justify-self:start}#saveBtn{grid-area:save}
   .icon-btn,.close-btn{min-width:48px;min-height:44px;padding:0 13px}
   .hud .icon-btn{font-size:.88rem}
   .meter{width:clamp(82px,12vw,118px)}
@@ -131,8 +131,8 @@ button{-webkit-tap-highlight-color:transparent;touch-action:manipulation}
 
 @media (min-width:700px) and (max-width:1180px) and (orientation:landscape){
   .game-screen{grid-template-rows:64px minmax(0,1fr) auto}
-  .hud{grid-template-columns:auto minmax(145px,210px) auto minmax(120px,1fr) repeat(4,auto);grid-template-rows:56px;grid-template-areas:none;padding-top:4px;padding-bottom:4px}
-  #mapBtn,.hud-stat:first-of-type,.hud-stat:nth-of-type(2),.hud-location,#bondBtn,#galleryBtn,#inventoryBtn,#saveBtn{grid-area:auto}
+  .hud{grid-template-columns:auto minmax(145px,210px) auto minmax(120px,1fr) repeat(5,auto);grid-template-rows:56px;grid-template-areas:none;padding-top:4px;padding-bottom:4px}
+  #mapBtn,.hud-stat:first-of-type,.hud-stat:nth-of-type(2),.hud-location,#bondBtn,#galleryBtn,#soundBtn,#inventoryBtn,#saveBtn{grid-area:auto}
   .hud-location{text-align:right}
   .hud .icon-btn{padding:0 10px;font-size:.82rem}
   .overlay{inset:76px max(16px,env(safe-area-inset-right)) max(14px,env(safe-area-inset-bottom)) max(16px,env(safe-area-inset-left))}
