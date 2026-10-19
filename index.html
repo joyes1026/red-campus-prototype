@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#09090b">
+  <title>赤雨封鎖線｜七日篇</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath fill='%2309090b' d='M0 0h64v64H0z'/%3E%3Cpath fill='none' stroke='%23d3263e' stroke-width='6' d='M16 48 32 10l16 38M21 37h22'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main id="app" class="app">
+    <section id="titleScreen" class="screen title-screen" aria-label="標題畫面">
+      <div class="title-bg"></div>
+      <div class="title-cast"><img src="assets/characters-v2.png" alt="落雨、溫晨、李明朗與許安四名成年倖存者"></div>
+      <div class="alarm-sweep"></div>
+      <div class="title-copy">
+        <p class="location">東濱大學 · 封鎖第 0 日</p>
+        <h1>赤雨<br><span>封鎖線</span></h1>
+        <p class="chapter">七日篇：封鎖線之外</p>
+        <nav class="title-menu" aria-label="遊戲選單">
+          <button id="newGameBtn" class="primary">開始新遊戲</button>
+          <button id="continueBtn">讀取存檔</button>
+          <button id="chapterBtn">故事簡介</button>
+        </nav>
+      </div>
+      <p class="content-note">四名成年角色 · 驚悚氣氛 · 無露骨內容</p>
+    </section>
+
+    <section id="gameScreen" class="screen game-screen hidden" aria-label="遊戲畫面">
+      <header class="hud">
+        <button id="mapBtn" class="icon-btn" aria-label="開啟探索地圖">地圖</button>
+        <div class="hud-stat"><span>生命</span><div class="meter"><i id="hpBar"></i></div><b id="hpText">100</b></div>
+        <div class="hud-stat"><span>物資</span><b id="resourceText">2</b></div>
+        <div class="hud-location"><span id="chapterLabel">第一日 · 16:40</span><strong id="locationLabel">校總圖書館</strong></div>
+        <button id="bondBtn" class="icon-btn">羈絆</button>
+        <button id="galleryBtn" class="icon-btn">CG 回放</button>
+        <button id="soundBtn" class="icon-btn sound-btn" aria-pressed="true">聲音：開</button>
+        <button id="inventoryBtn" class="icon-btn">物品</button>
+        <button id="saveBtn" class="icon-btn">存檔</button>
+      </header>
+
+      <div id="stage" class="stage">
+        <div id="background" class="layer background bg-atlas bg-classroom"></div>
+        <div class="vignette"></div>
+        <div id="sprite" class="sprite-layer hidden" aria-hidden="true"><img src="assets/sprite-luoyu.png" alt=""></div>
+        <div id="characterIntro" class="character-intro hidden" role="dialog" aria-label="角色介紹">
+          <img id="introPortrait" src="assets/sprite-luoyu.png" alt="">
+          <div><span id="introTag">SURVIVOR PROFILE</span><h2 id="introName">落雨</h2><strong id="introRole">心理系研究生／24 歲</strong><p id="introText"></p><button id="introContinue">認識她</button></div>
+        </div>
+        <div id="eventCg" class="event-cg hidden" role="dialog" aria-label="劇情事件插圖">
+          <img id="eventCgImage" src="assets/cg-library-night.png" alt="">
+          <div class="event-caption"><span id="eventCgTag">劇情事件</span><p id="eventCgCaption"></p><button id="eventCgContinue">繼續</button></div>
+        </div>
+        <div id="redFlash" class="red-flash"></div>
+        <aside id="objective" class="objective"><span>目前目標</span><strong id="objectiveText">確認圖書館的異常</strong></aside>
+      </div>
+
+      <section id="dialogueBox" class="dialogue" aria-live="polite">
+        <div class="speaker-row"><strong id="speaker">落雨</strong><span id="role">心理系研究生／24 歲</span></div>
+        <p id="dialogueText">假日的圖書館太安靜了。</p>
+        <div id="choices" class="choices"></div>
+        <button id="nextBtn" class="next-btn">繼續</button>
+      </section>
+    </section>
+
+    <section id="mapPanel" class="panel overlay hidden" aria-label="探索地圖">
+      <div class="panel-head"><div><span id="mapArea">校總圖書館</span><h2 id="mapTitle">封鎖區域</h2></div><button class="close-btn" data-close="mapPanel">關閉</button></div>
+      <div id="mapGrid" class="map-grid"></div>
+      <p id="mapTip" class="map-tip"></p>
+    </section>
+    <section id="inventoryPanel" class="panel side-panel hidden" aria-label="物品欄"><div class="panel-head"><h2>隨身物品</h2><button class="close-btn" data-close="inventoryPanel">關閉</button></div><div id="inventoryList" class="inventory-list"></div></section>
+    <section id="bondPanel" class="panel side-panel hidden" aria-label="角色羈絆"><div class="panel-head"><h2>信任與羈絆</h2><button class="close-btn" data-close="bondPanel">關閉</button></div><div id="bondList" class="bond-list"></div></section>
+    <section id="galleryPanel" class="panel overlay hidden" aria-label="CG 回放"><div class="panel-head"><div><span>已解鎖事件</span><h2>記憶回放</h2></div><button class="close-btn" data-close="galleryPanel">關閉</button></div><div id="galleryGrid" class="gallery-grid"></div><p class="map-tip">做出理解角色的選擇，才能解鎖專屬羈絆 CG。解鎖紀錄會保留在本機。</p></section>
+    <section id="savePanel" class="panel overlay compact hidden" aria-label="存檔與讀檔"><div class="panel-head"><h2>本機存檔</h2><button class="close-btn" data-close="savePanel">關閉</button></div><p id="saveSummary">尚無存檔</p><div class="save-actions"><button id="writeSaveBtn" class="primary">覆寫存檔</button><button id="loadSaveBtn">讀取存檔</button><button id="titleBtn">返回標題</button></div></section>
+    <section id="puzzlePanel" class="panel overlay puzzle-panel hidden" aria-live="polite"></section>
+    <section id="toast" class="toast hidden" aria-live="assertive"></section>
+    <section id="ending" class="screen ending hidden"></section>
+  </main>
+  <script src="game-v5.js" defer onload="document.body.dataset.gameReady='true'" onerror="document.body.dataset.gameReady='error'"></script>
+</body>
+</html>
