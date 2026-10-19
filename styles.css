@@ -169,3 +169,53 @@ button{-webkit-tap-highlight-color:transparent;touch-action:manipulation}
   .dialogue p{line-height:1.55;margin:7px 0}
   .character-intro p{max-height:27vh;overflow:auto}
 }
+
+/* v5 — integrated title composition and story window */
+.title-cast{isolation:isolate}
+.title-cast:after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,#09090b 0,transparent 20%),linear-gradient(180deg,#09090b 0,transparent 16%,transparent 88%,#09090b 100%)}
+
+.chapter-modal{position:fixed;z-index:100;inset:0;display:grid;place-items:center;padding:max(20px,env(safe-area-inset-top)) max(20px,env(safe-area-inset-right)) max(20px,env(safe-area-inset-bottom)) max(20px,env(safe-area-inset-left));background:#050506e8}
+.chapter-window{position:relative;width:min(960px,calc(100vw - 40px));min-height:min(680px,calc(100dvh - 40px));overflow:hidden;background:url('assets/bg-library-reading.png') center/cover;box-shadow:0 24px 70px #000d}
+.chapter-window:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#07070920 0 30%,#070709d9 61%,#070709fa 100%),linear-gradient(0deg,#070709b8,transparent 50%)}
+.chapter-close{position:absolute;z-index:3;top:20px;right:20px;background:#0c0c10d9}
+.chapter-copy{position:relative;z-index:2;width:min(530px,58%);min-height:inherit;margin-left:auto;padding:clamp(66px,8vh,92px) clamp(34px,5vw,64px) 44px;display:flex;flex-direction:column;justify-content:center}
+.chapter-day{margin:0 0 10px;color:var(--red-bright);font:700 .78rem system-ui;letter-spacing:.12em}
+.chapter-copy h2{margin:0 0 24px;font-size:clamp(2.4rem,5vw,4.8rem);line-height:1.04;letter-spacing:-.03em}
+.chapter-copy>p:not(.chapter-day){margin:0 0 16px;color:#e2dcd7;font-size:clamp(.98rem,1.6vw,1.08rem);line-height:1.8}
+.chapter-copy .primary{align-self:flex-start;min-height:52px;margin-top:12px;padding:12px 24px;border:1px solid var(--red);color:#fff}
+
+@media (min-width:700px) and (max-width:1180px) and (orientation:landscape){
+  .title-copy{width:44vw;padding-top:max(34px,env(safe-area-inset-top));padding-left:max(42px,env(safe-area-inset-left))}
+  .title-copy h1{font-size:clamp(4.6rem,8.5vw,6.2rem);margin-top:5vh}
+  .title-cast{inset:4vh 0 0 28vw;opacity:.82}
+}
+
+@media (min-width:700px) and (max-width:900px) and (orientation:portrait){
+  .title-screen{overflow:hidden}
+  .title-copy{width:100%;padding:42px 28px max(90px,calc(74px + env(safe-area-inset-bottom)));pointer-events:none}
+  .title-copy>*{pointer-events:auto}
+  .title-copy h1{font-size:clamp(4.2rem,11vw,5.6rem);margin:6vh 0 1rem}
+  .title-cast{inset:37vh 0 82px 10vw;opacity:.8}
+  .title-cast img{object-position:center bottom}
+  .title-menu{position:absolute;z-index:5;left:max(22px,env(safe-area-inset-left));right:max(22px,env(safe-area-inset-right));bottom:max(18px,env(safe-area-inset-bottom));width:auto;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+  .title-menu button{text-align:center;min-height:56px;padding:.7rem .5rem;background:#08080aeb}
+  .title-menu button.primary{background:var(--red)}
+  .chapter-modal{padding:16px}
+  .chapter-window{width:100%;min-height:calc(100dvh - 32px);background-position:center top}
+  .chapter-window:before{background:linear-gradient(0deg,#070709fc 0 58%,#070709a8 77%,#07070924 100%)}
+  .chapter-copy{width:100%;min-height:inherit;margin:0;padding:44vh 34px 34px;justify-content:flex-end}
+  .chapter-copy h2{font-size:clamp(2.5rem,7vw,3.8rem);margin-bottom:18px}
+  .chapter-copy>p:not(.chapter-day){font-size:1rem;line-height:1.62;margin-bottom:12px}
+  .chapter-copy .primary{width:100%;margin-top:8px}
+}
+
+@media (max-width:699px){
+  .chapter-modal{padding:0}
+  .chapter-window{width:100%;min-height:100dvh;background-position:58% top}
+  .chapter-window:before{background:linear-gradient(0deg,#070709fc 0 64%,#0707098a 84%,transparent 100%)}
+  .chapter-close{top:max(14px,env(safe-area-inset-top));right:max(14px,env(safe-area-inset-right))}
+  .chapter-copy{width:100%;min-height:100dvh;margin:0;padding:38vh 22px max(24px,env(safe-area-inset-bottom));justify-content:flex-end;overflow:auto}
+  .chapter-copy h2{font-size:2.35rem;margin-bottom:14px}
+  .chapter-copy>p:not(.chapter-day){font-size:.95rem;line-height:1.55;margin-bottom:10px}
+  .chapter-copy .primary{width:100%}
+}
