@@ -216,3 +216,9 @@ button{-webkit-tap-highlight-color:transparent;touch-action:manipulation}
   .chapter-copy>p:not(.chapter-day){font-size:.95rem;line-height:1.55;margin-bottom:10px}
   .chapter-copy .primary{width:100%}
 }
+
+/* Classic title treatment: original cast art on solid black, without a vignette. */
+.title-bg{display:none}
+.title-cast{opacity:1;filter:none}
+.title-cast:after{content:none}
+.alarm-sweep{z-index:2;pointer-events:none}
