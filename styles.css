@@ -222,3 +222,21 @@ button{-webkit-tap-highlight-color:transparent;touch-action:manipulation}
 .title-cast{opacity:1;filter:none}
 .title-cast:after{content:none}
 .alarm-sweep{z-index:2;pointer-events:none}
+
+@media (min-width:700px) and (max-width:900px) and (orientation:portrait){
+  .title-copy{width:100%;padding:34px 28px max(94px,calc(78px + env(safe-area-inset-bottom)))}
+  .title-copy h1{font-size:clamp(4rem,10.5vw,5.3rem);margin:4.5vh 0 .8rem}
+  .chapter{font-size:1rem;letter-spacing:.18em}
+  .title-cast{inset:34vh 2vw 88px 2vw}
+  .title-cast img{object-position:center center}
+  .title-menu{left:max(22px,env(safe-area-inset-left));right:max(22px,env(safe-area-inset-right));bottom:max(18px,env(safe-area-inset-bottom));grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+  .title-menu button{min-height:56px;padding:.7rem .45rem;text-align:center}
+  .content-note{display:none}
+}
+
+@media (min-width:901px) and (max-width:1180px) and (orientation:landscape){
+  .title-copy{width:40vw}
+  .title-copy h1{font-size:clamp(4.5rem,8vw,5.8rem)}
+  .title-cast{inset:2vh 0 0 34vw}
+  .title-menu{width:min(300px,100%)}
+}
