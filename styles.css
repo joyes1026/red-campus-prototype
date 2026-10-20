@@ -170,10 +170,7 @@ button{-webkit-tap-highlight-color:transparent;touch-action:manipulation}
   .character-intro p{max-height:27vh;overflow:auto}
 }
 
-/* v5 — integrated title composition and story window */
-.title-cast{isolation:isolate}
-.title-cast:after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,#09090b 0,transparent 20%),linear-gradient(180deg,#09090b 0,transparent 16%,transparent 88%,#09090b 100%)}
-
+/* v5 — story window */
 .chapter-modal{position:fixed;z-index:100;inset:0;display:grid;place-items:center;padding:max(20px,env(safe-area-inset-top)) max(20px,env(safe-area-inset-right)) max(20px,env(safe-area-inset-bottom)) max(20px,env(safe-area-inset-left));background:#050506e8}
 .chapter-window{position:relative;width:min(960px,calc(100vw - 40px));min-height:min(680px,calc(100dvh - 40px));overflow:hidden;background:url('assets/bg-library-reading.png') center/cover;box-shadow:0 24px 70px #000d}
 .chapter-window:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#07070920 0 30%,#070709d9 61%,#070709fa 100%),linear-gradient(0deg,#070709b8,transparent 50%)}
